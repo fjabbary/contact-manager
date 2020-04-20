@@ -5,6 +5,7 @@ import Header from './components/Header';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../node_modules/font-awesome/css/font-awesome.min.css'
 import { Provider } from './context'
+import AddContact from './components/AddContact';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <div className="App">
         <Header />
         <div className="container">
+          <AddContact />
           <Contacts />
         </div>
       </div>
