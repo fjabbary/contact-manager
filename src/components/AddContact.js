@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Consumer } from '../context';
+import uuid from 'react-uuid'
 
 export default class AddContact extends Component {
     constructor(props) {
@@ -11,29 +12,42 @@ export default class AddContact extends Component {
     }
 
 
-    static defaultProps = {
-        name: 'Fred Smith',
-        email: 'fred@gmail.com',
-        phone: '333-222-1111'
+    state = {
+        name: '',
+        email: '',
+        phone: '',
+        errors: {}
     }
 
     onSubmit = (dispatch, e) => {
         e.preventDefault();
 
+        let nameInput = this.nameInput.current.value
+        let emailInput = this.emailInput.current.value
+        let phoneInput = this.phoneInput.current.value
+
         const contact = {
-            name: this.nameInput.current.value,
-            email: this.emailInput.current.value,
-            phone: this.phoneInput.current.value
+            id: uuid(),
+            name: nameInput,
+            email: emailInput,
+            phone: phoneInput
         }
 
-        dispatch({
-            type: 'ADD_CONTACT',
-            newContact: contact
-        })
+        if (nameInput && emailInput && phoneInput) {
+            dispatch({
+                type: 'ADD_CONTACT',
+                newContact: contact
+            })
+        }
+
+
+        this.nameInput.current.value = ''
+        this.emailInput.current.value = ''
+        this.phoneInput.current.value = '';
     }
 
     render() {
-        const { name, email, phone } = this.props;
+        const { name, email, phone } = this.state;
 
         return (
             <Consumer>

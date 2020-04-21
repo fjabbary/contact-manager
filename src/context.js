@@ -12,7 +12,7 @@ const reducer = (state, action) => {
         case 'ADD_CONTACT':
             return {
                 ...state,
-                contactList: [...state.contactList, action.newContact]
+                contactList: [action.newContact, ...state.contactList]
             }
 
         default:
