@@ -44,6 +44,8 @@ export default class AddContact extends Component {
         this.nameInput.current.value = ''
         this.emailInput.current.value = ''
         this.phoneInput.current.value = '';
+
+        this.props.history.push('/')
     }
 
     render() {
@@ -52,6 +54,7 @@ export default class AddContact extends Component {
         return (
             <Consumer>
                 {value => {
+                    console.log(value)
                     const { dispatch } = value;
 
                     return (

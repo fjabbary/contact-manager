@@ -8,8 +8,10 @@ export default class Contacts extends Component {
         return (
             <Consumer>
                 {value => {
+                    console.log(value)
                     return (
                         <div>
+                            <h1 className="display-4"> <span className="text-danger">Contact</span> List ({value.contactList.length})</h1>
                             {value.contactList.map((contact) => {
                                 return <Contact key={contact.id} contact={contact} />
                             })}

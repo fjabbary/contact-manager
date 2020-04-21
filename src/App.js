@@ -6,17 +6,22 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../node_modules/font-awesome/css/font-awesome.min.css'
 import { Provider } from './context'
 import AddContact from './components/AddContact';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
     <Provider>
-      <div className="App">
-        <Header />
-        <div className="container">
-          <AddContact />
-          <Contacts />
+      <Router>
+        <div className="App">
+          <Header />
+          <div className="container">
+            <Switch>
+              <Route exact path="/" component={Contacts} />
+              <Route path="/contact/add" component={AddContact} />
+            </Switch>
+          </div>
         </div>
-      </div>
+      </Router>
     </Provider>
   );
 }
